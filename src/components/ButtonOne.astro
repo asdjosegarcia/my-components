@@ -12,7 +12,9 @@ const { title, fn, className,link} = Astro.props;
 ---
 
 <button class=`bg-slate-700 rounded-lg px-3 py-2 hover:text-sky-400 ${className}`>
-    {title}
+    <a href=`${link}`>
+        {title}
+    </a>
 </button>
 <style>
 
