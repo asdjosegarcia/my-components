@@ -1,0 +1,19 @@
+---
+import { string } from 'astro/zod';
+
+interface Props {
+	title: string;
+    fn?:() => void; //to recive a function. 
+    className?:string;
+    link?:string;
+}
+
+const { title, fn, className,link} = Astro.props;
+---
+
+<button class=`bg-slate-700 rounded-lg px-3 py-2 hover:text-sky-400 ${className}`>
+    {title}
+</button>
+<style>
+
+</style>
