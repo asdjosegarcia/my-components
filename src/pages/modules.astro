@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../layouts/Navbar.astro";
 import GuidedSelector from "../components/Modules/GuidedSelector.astro";
+import GuidedSelectorTSX from "../components/Modules/GuidedSelectorTSX";
+
 ---
 
 <Layout title="Modules">
@@ -9,6 +11,8 @@ import GuidedSelector from "../components/Modules/GuidedSelector.astro";
   <h1 class="text-center font-bold text-4xl py-2 text-slate-300">
     Modules Section
   </h1>
-  <GuidedSelector/>
+  <!-- <GuidedSelector/> -->
+  <GuidedSelectorTSX client:visible/>
+
 
 </Layout>
