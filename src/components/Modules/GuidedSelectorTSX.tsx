@@ -16,7 +16,7 @@ const GuidedSelectorTSX = (props: object) => {
   }, [])
   const showStep = () => { //this function return items to show
     // console.log(data[getStep]);
-    return (<div className='h-full '>{data[getStep]}</div>)//we can return a label, component, or another item 
+    return (<div className='h-full w-full text-center text-8xl'>{data[getStep]}</div>)//we can return a label, component, or another item 
   }
 
   ////////////////////////////////////////////Buttons
