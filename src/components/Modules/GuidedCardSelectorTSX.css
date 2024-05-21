@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+.font-quicksand {
+  font-family: "Quicksand", sans-serif;
+}
+.step-button {
+  @apply h-[150px] w-[150px] border-4 border-gray-500  rounded-lg border-t-0 bg-slate-300 text-3xl;
+}
+.current-step-button{
+  @apply text-green-500 border-r-0 /* border-b-0 */ border-t-0 bg-transparent;
+  /* border: 2px solid transparent; */
+}
+.common-button {
+  @apply text-2xl text-white  border-4 border-gray-300 rounded-full py-1 w-[170px] flex flex-row items-center justify-center;
+}

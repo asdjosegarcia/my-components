@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../layouts/Navbar.astro";
 import GuidedSelector from "../components/Modules/GuidedSelector.astro";
 import GuidedSelectorTSX from "../components/Modules/GuidedSelectorTSX";
-
+import GuidedCardSelectorTSX from "../components/Modules/GuidedCardSelectorTSX";
 ---
 
 <Layout title="Modules">
@@ -12,7 +12,8 @@ import GuidedSelectorTSX from "../components/Modules/GuidedSelectorTSX";
     Modules Section
   </h1>
   <!-- <GuidedSelector/> -->
-  <GuidedSelectorTSX client:visible/>
+  <!-- <GuidedSelectorTSX client:visible/> -->
+  <GuidedCardSelectorTSX client:visible/>
 
 
 </Layout>
