@@ -41,9 +41,9 @@ const GuidedSelectorTSX = (props: object) => {
   return (
     <section className="font-quicksand font-bold relative bg-gray-200 h-[800px] w-[800px] mx-auto rounded-lg text-gray-700 grid grid-cols-[150px,auto]">
       <div className="">
-        <button className={`step-button ${getStep == 1 ? 'current-step-button' : ''}`}>1 <br /> Step </button>
-        <button className={`step-button ${getStep == 2 ? 'current-step-button' : ''}`}>2 <br /> Step </button>
-        <button className={`step-button ${getStep == 3 ? 'current-step-button' : ''}`}>3 <br /> Step </button>
+        <button className={`step-button ${getStep == 1 ? 'current-step-button' : ''}`} onClick={()=>setStep(1)}>1 <br /> Step </button>
+        <button className={`step-button ${getStep == 2 ? 'current-step-button' : ''}`} onClick={()=>setStep(2)}>2 <br /> Step </button>
+        <button className={`step-button ${getStep == 3 ? 'current-step-button' : ''}`} onClick={()=>setStep(3)}>3 <br /> Step </button>
       </div>
       <div className="right-0  col-start-2"  >
         {

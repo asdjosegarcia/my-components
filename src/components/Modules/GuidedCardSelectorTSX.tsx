@@ -104,7 +104,7 @@ const GuidedCardSelectorTSX = (props: object) => {
     const showStep = () => { //this function return items to show
         //here we haver to generate a new fetch request whith a antry parameters  
         const request=(compatibleList:Array<string>,)=>{//fake request
-
+            
         }
 
 
