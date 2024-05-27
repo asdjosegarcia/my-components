@@ -103,17 +103,23 @@ const GuidedCardSelectorTSX = (props: object) => {
     }, [])
     const showStep = () => { //this function return items to show
         //here we haver to generate a new fetch request whith a antry parameters  
-        const request=(compatibleList:Array<string>,)=>{//fake request
-            
-        }
+        // const request=(compatibleList:Array<string>,)=>{//fake request
+        //     return 
+        // }
 
 
         // console.log(data[getStep]);
         // return (<div className='h-full w-full text-center text-8xl'>{data[getStep]}</div>)//we can return a label, component, or another item 
 
         return (
-            <div className='card w-[200px} h-[250px] flex flex-col align-middle text-center bg-red-400'>
-
+            <div className='w-full flex justify-center'>
+                {data[getStep].map((item)=>
+                    <button className='border-2 border-gray-500 rounded-lg m-2 w-48 flex flex-col'>
+                        <img className="h-48 object-scale-down" src={item.image}></img>
+                        <h2>{item.title}</h2>
+                        <p>${item.price}</p>
+                    </button>
+                )}
             </div>
         )
     }
