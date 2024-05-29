@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import './GuidedCardSelectorTSX.css'
+import type { array } from 'astro/zod';
+
+interface Item {//this object interface describe object expected values types
+    id?: number;
+    title: string;
+    image: string;
+    price: number;
+    compatibeWith: string[]
+    compatibleNew:string[]
+}
+let selectedProdcuts: {[key: number]: Item}={};//here we store prodcuts selected by user
+let compatibleList: string[]=[];
+
+
 
 const GuidedCardSelectorTSX = (props: object) => {
     const stepsNumber: number = 3;//number of total steps
     const [getStep, setStep] = useState<number>(1)//1 for default step
-    let selectedProdcuts: [object];//here we store prodcuts selected by user
-    let compatibleList: [];
     let porductsPrices: string;//
-    interface Item {//this object interface describe object expected values types
-        id?: number;
-        title: string;
-        image: string;
-        price: number;
-        compatibeWith: string[]
-        compatibleNew:string[]
-    }
 
     const data: { [key: number]: Item[] } = { //input data/example object with data to show
         1: [
@@ -22,14 +26,14 @@ const GuidedCardSelectorTSX = (props: object) => {
                 id: 21,
                 title: 'Cat',
                 image: 'https://pngimg.com/uploads/cat/cat_PNG50521.png',
-                price: 2.56,
+                price: 0,
                 compatibeWith: [],
                 compatibleNew:['cat']
             },
             {
                 title: 'Dog',
                 image: 'https://pngimg.com/uploads/dog/dog_PNG2453.png',
-                price: 2.56,
+                price: 0,
                 compatibeWith: [],
                 compatibleNew:['dog']
             }, 
@@ -40,7 +44,7 @@ const GuidedCardSelectorTSX = (props: object) => {
                 image: 'https://pngimg.com/uploads/dog_collar/dog_collar_PNG1.png',
                 price: 2.56,
                 compatibeWith: ['cat'],
-                compatibleNew:[]
+                compatibleNew:['tucan']
             },
             {
                 title: 'Cat collar 2',
@@ -106,18 +110,18 @@ const GuidedCardSelectorTSX = (props: object) => {
         // const request=(compatibleList:Array<string>,)=>{//fake request
         //     return 
         // }
-
+        
 
         // console.log(data[getStep]);
         // return (<div className='h-full w-full text-center text-8xl'>{data[getStep]}</div>)//we can return a label, component, or another item 
 
         return (
-            <div className='w-full flex justify-center'>
+            <div className='w-full  flex  flex-wrap'>
                 {data[getStep].map((item)=>
-                    <button className='border-2 border-gray-500 rounded-lg m-2 w-48 flex flex-col'>
+                    <button onClick={()=>card(item)} className='border-2 border-gray-500 bg-white rounded-lg m-2 w-48 flex flex-col h-min py-1 '>
                         <img className="h-48 object-scale-down" src={item.image}></img>
                         <h2>{item.title}</h2>
-                        <p>${item.price}</p>
+                        <p className='text-green-700'>{(item.price !==0)?`$${item.price}`:""}</p>
                     </button>
                 )}
             </div>
@@ -125,10 +129,34 @@ const GuidedCardSelectorTSX = (props: object) => {
     }
 
     ////////////////////////////////////////////Buttons
+    const card=(item:Item)=>{ //Item is the variable we declare UP
+        // console.log(item)
+        // if(selectedProdcuts[getStep]){
+                selectedProdcuts[getStep]=item//if in slectedProducts getStep contains a object 
+        
+        // console.log(selectedProdcuts)
+        // compatibleList=selectedProdcuts[getStep].flatMap((item,)=>{
+        //     let newArrayList=item.compatibleNew.map((campatible)=>{return campatible})
+        //     return newArrayList
+           
+            
+        // })
+        // compatibleList = 
+        // selectedProdcuts[getStep].flatMap(item => {
+        //     return item.compatibleNew.map(compatible=>{return compatible});
+        // });
+
+        console.log('compatibleList',compatibleList)
+        console.log('selectedProdcuts',selectedProdcuts)
+
+        return next()
+    }
+
     const next = () => {
         if (getStep < stepsNumber) {
-            //   setStep(getStep + 1)
+              setStep(getStep + 1)
         }
+        console.log(getStep )
     }
     const previous = () => {
         if (getStep > 1) {
@@ -149,7 +177,7 @@ const GuidedCardSelectorTSX = (props: object) => {
                 <button className={`step-button ${getStep == 2 ? 'current-step-button' : ''}`}>2 <br /> Step </button>
                 <button className={`step-button ${getStep == 3 ? 'current-step-button' : ''}`}>3 <br /> Step </button>
             </div>
-            <div className="right-0  col-start-2"  >
+            <div className="right-0  col-start-2 "  >
                 {
                     showStep()
                 }
