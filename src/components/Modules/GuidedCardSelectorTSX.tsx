@@ -106,6 +106,7 @@ const GuidedCardSelectorTSX = (props: object) => {
         showStep()
     }, [])
     const showStep = () => { //this function return items to show
+        
         //here we haver to generate a new fetch request whith a antry parameters  
         // const request=(compatibleList:Array<string>,)=>{//fake request
         //     return 
@@ -117,8 +118,8 @@ const GuidedCardSelectorTSX = (props: object) => {
 
         return (
             <div className='w-full  flex  flex-wrap'>
-                {data[getStep].map((item)=>
-                    <button onClick={()=>card(item)} className='border-2 border-gray-500 bg-white rounded-lg m-2 w-48 flex flex-col h-min py-1 '>
+                {data[getStep].map((item,index)=>
+                    <button onClick={()=>card(item)} key={index} className='border-2 border-gray-500 bg-white rounded-lg m-2 w-48 flex flex-col h-min py-1 '>
                         <img className="h-48 object-scale-down" src={item.image}></img>
                         <h2>{item.title}</h2>
                         <p className='text-green-700'>{(item.price !==0)?`$${item.price}`:""}</p>
@@ -130,21 +131,16 @@ const GuidedCardSelectorTSX = (props: object) => {
 
     ////////////////////////////////////////////Buttons
     const card=(item:Item)=>{ //Item is the variable we declare UP
-        // console.log(item)
-        // if(selectedProdcuts[getStep]){
-                selectedProdcuts[getStep]=item//if in slectedProducts getStep contains a object 
-        
-        // console.log(selectedProdcuts)
-        // compatibleList=selectedProdcuts[getStep].flatMap((item,)=>{
-        //     let newArrayList=item.compatibleNew.map((campatible)=>{return campatible})
-        //     return newArrayList
-           
-            
-        // })
-        // compatibleList = 
-        // selectedProdcuts[getStep].flatMap(item => {
-        //     return item.compatibleNew.map(compatible=>{return compatible});
-        // });
+
+         selectedProdcuts[getStep]=item//if in slectedProducts getStep contains a object    
+
+        compatibleList =[ //we add new compatible string to filter the next item
+            ...compatibleList, 
+            ...selectedProdcuts[getStep].compatibleNew.map((item) => {
+            return item;
+            })
+        ];
+
 
         console.log('compatibleList',compatibleList)
         console.log('selectedProdcuts',selectedProdcuts)
