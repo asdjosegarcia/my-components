@@ -1,11 +1,8 @@
----
-
-    // alert(`Resolución de la pantalla: ${screen.width} x ${screen.height} píxeles`);
-
----
-
 <div>
-    <button id="resolutionButton" class="text-2xl text-white  border-4 border-gray-300 rounded-full py-1 w-[170px] text-center ">Resolucion</button>
+    <div class="h-100 w-100 flex items-center justify-center">
+
+        <button id="resolutionButton" class="text-2xl text-white  border-4 border-gray-300 rounded-full py-1 w-[170px] flex flex-row items-center justify-center">Display resolution</button> 
+    </div>
   
     <script>
       document.addEventListener('DOMContentLoaded', (event) => {
@@ -16,7 +13,11 @@
         }
   
         const button = document.getElementById('resolutionButton');
-        button.addEventListener('click', showResolution);
+        if (button) {
+          button.addEventListener('click', showResolution);
+        } else {
+          console.error('El botón con id "resolutionButton" no se encontró.');
+        }
       });
     </script>
   </div>
