@@ -1,0 +1,23 @@
+---
+
+    // alert(`Resolución de la pantalla: ${screen.width} x ${screen.height} píxeles`);
+
+---
+
+<div>
+    <button id="resolutionButton" class="text-2xl text-white  border-4 border-gray-300 rounded-full py-1 w-[170px] text-center ">Resolucion</button>
+  
+    <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+        function showResolution() {
+          const width = screen.width;
+          const height = screen.height;
+          alert(`Resolución de la pantalla: ${width} x ${height} píxeles`);
+        }
+  
+        const button = document.getElementById('resolutionButton');
+        button.addEventListener('click', showResolution);
+      });
+    </script>
+  </div>
+  
